@@ -1,6 +1,7 @@
 services:
   strapi1:
     image: 513160854534.dkr.ecr.eu-west-2.amazonaws.com/list-learner/dev-registry:latest
+    container_name: listlearner_dev_strapi1
     environment:
       DATABASE_CLIENT: ${DATABASE_CLIENT}
       DATABASE_HOST: ${DATABASE_HOST}
@@ -15,6 +16,7 @@ services:
   strapi2:
     image: 513160854534.dkr.ecr.eu-west-2.amazonaws.com/list-learner/dev-registry:latest
     environment:
+      container_name: listlearner_dev_strapi2
       DATABASE_CLIENT: postgres
       DATABASE_HOST: ${DATABASE_HOST}
       DATABASE_PORT: ${DATABASE_PORT}
@@ -26,6 +28,7 @@ services:
       - "1339:1337"
     restart: always
   haproxy:
+    container_name: listlearner_dev_haproxy
     image: haproxy:latest
     depends_on:
       - strapi1
